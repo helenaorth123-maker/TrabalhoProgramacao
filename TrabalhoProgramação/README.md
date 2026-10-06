@@ -1,0 +1,19 @@
+# Projeto de Jogos
+
+## Integrantes
+
+- Danieli
+- Eloisa
+- Helena
+- Jordana
+
+## Tema do Projeto
+
+Nosso tema escolhido foi **jogos**, pois todas nós jogamos e temos interesse nesse conteúdo.
+
+Acreditamos que será um tema muito bom para entendermos melhor os conteúdos trabalhados durante a disciplina e, ao mesmo tempo, desenvolvermos um projeto interessante e divertido para todas nós.
+
+## Diagrama de Classes UML
+
+![Diagrama de Classes UML](projeto.drawio.png)
+
