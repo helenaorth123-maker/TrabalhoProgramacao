@@ -20,5 +20,9 @@ public class JogoDeEstrategia extends Jogo{
     public void planejar() {
         System.out.println("Planejando estratégia...");
     }
+    @Override
+    public void iniciar() {
+        System.out.println("Jogo de estratégia iniciado.");
+    }
 }
 	

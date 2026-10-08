@@ -1,13 +1,17 @@
 package app;
-
+		
 		import model.Jogo;
+		import model.JogoDeAcao;
+		import model.JogoDeEstrategia;
 		import model.Jogador;
 		import model.Partida;
+		
 		import repository.JogoRepository;
 		import repository.JogadorRepository;
 		import repository.PartidaRepository;
-
+		
 		import java.time.LocalDate;
+
 		
 		public class Main {
 
@@ -100,6 +104,26 @@ package app;
 		        partidaRepository.remover(100);
 
 		        System.out.println("Partida removida!");
+		        
+		        System.out.println();
+		        
+
+		        Jogo jogoEstrategia = new JogoDeEstrategia(
+		                "Age of Empires",
+		                "Estratégia",
+		                "PC",
+		                50
+		        );
+
+		        Jogo jogoAcao = new JogoDeAcao(
+		                "GTA V",
+		                "Ação",
+		                "PC",
+		                5
+		        );
+
+		        jogoEstrategia.iniciar();
+		        jogoAcao.iniciar();
 		    }
 		}
 

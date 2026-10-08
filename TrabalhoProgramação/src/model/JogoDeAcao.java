@@ -18,7 +18,11 @@ public class JogoDeAcao extends Jogo {
     }
 
     public void atacar() {
-        System.out.println("Ataque realizado!");
+        System.out.println("Atacando...");
+    }
+    @Override
+    public void iniciar() {
+        System.out.println("Jogo de ação iniciado.");
     }
 }
 
