@@ -1,8 +1,9 @@
+
 package model;
 
 public class JogoDeAcao extends Jogo {
-	
-	private int dificuldade;
+
+    private int dificuldade;
 
     public JogoDeAcao(String titulo, String genero, String plataforma, int dificuldade) {
         super(titulo, genero, plataforma);
@@ -24,5 +25,9 @@ public class JogoDeAcao extends Jogo {
     public void iniciar() {
         System.out.println("Jogo de ação iniciado.");
     }
-}
 
+    @Override
+    public void iniciar() {
+        System.out.println("Iniciando jogo de acao: " + getTitulo());
+    }
+}

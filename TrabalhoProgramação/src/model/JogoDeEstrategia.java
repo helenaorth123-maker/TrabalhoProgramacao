@@ -1,8 +1,9 @@
+
 package model;
 
-public class JogoDeEstrategia extends Jogo{
-	
-	private int numUnidades;
+public class JogoDeEstrategia extends Jogo {
+
+    private int numUnidades;
 
     public JogoDeEstrategia(String titulo, String genero, String plataforma, int numUnidades) {
         super(titulo, genero, plataforma);
@@ -18,11 +19,15 @@ public class JogoDeEstrategia extends Jogo{
     }
 
     public void planejar() {
-        System.out.println("Planejando estratégia...");
+        System.out.println("Planejando estrategia...");
+    }
+
+    @Override
+    public void iniciar() {
+        System.out.println("Iniciando jogo de estrategia: " + getTitulo());
     }
     @Override
     public void iniciar() {
         System.out.println("Jogo de estratégia iniciado.");
     }
 }
-	
