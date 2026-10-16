@@ -1,3 +1,4 @@
+
 package repository;
 
 import java.util.ArrayList;
@@ -7,14 +8,29 @@ public class PartidaRepository {
 
     private ArrayList<Partida> partidas = new ArrayList<>();
 
-    public void inserir(Partida partida) {
+    // inserir partida
+    public boolean inserir(Partida partida) {
+
+        if (partida == null || partida.getData() == null
+                || partida.getDuracao() <= 0) {
+            return false;
+        }
+
+        // Evita pontuações repetidas, pois a busca usa a pontuação
+        if (buscarPorPontuacao(partida.getPontuacao()) != null) {
+            return false;
+        }
+
         partidas.add(partida);
-    }
-    
-    public ArrayList<Partida> listar() {
-        return partidas;
+        return true;
     }
 
+    // listar partidas
+    public ArrayList<Partida> listar() {
+        return new ArrayList<>(partidas);
+    }
+
+    // buscar pela pontuação
     public Partida buscarPorPontuacao(int pontuacao) {
 
         for (Partida partida : partidas) {
@@ -26,27 +42,29 @@ public class PartidaRepository {
         return null;
     }
 
+    // atualizar duração
     public boolean atualizar(int pontuacao, int novaDuracao) {
 
         Partida partida = buscarPorPontuacao(pontuacao);
 
-        if (partida != null) {
-            partida.setDuracao(novaDuracao);
-            return true;
+        if (partida == null || novaDuracao <= 0) {
+            return false;
         }
 
-        return false;
+        partida.setDuracao(novaDuracao);
+        return true;
     }
 
+    // remover pela pontuação
     public boolean remover(int pontuacao) {
 
         Partida partida = buscarPorPontuacao(pontuacao);
 
-        if (partida != null) {
-            partidas.remove(partida);
-            return true;
+        if (partida == null) {
+            return false;
         }
 
-        return false;
+        partidas.remove(partida);
+        return true;
     }
 }

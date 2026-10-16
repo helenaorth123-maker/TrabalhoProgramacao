@@ -23,11 +23,6 @@ public class JogoDeAcao extends Jogo {
     }
     @Override
     public void iniciar() {
-        System.out.println("Jogo de ação iniciado.");
-    }
-
-    @Override
-    public void iniciar() {
         System.out.println("Iniciando jogo de acao: " + getTitulo());
     }
 }

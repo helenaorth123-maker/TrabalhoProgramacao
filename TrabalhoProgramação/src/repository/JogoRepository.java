@@ -1,54 +1,80 @@
+
 package repository;
-	
-	import java.util.ArrayList;
-	import model.Jogo;
 
-	public class JogoRepository {
+import java.util.ArrayList;
+import model.Jogo;
 
-	    private ArrayList<Jogo> jogos = new ArrayList<>();
+public class JogoRepository {
 
-	    public void inserir(Jogo jogo) {
-	        jogos.add(jogo);
-	    }
+    private ArrayList<Jogo> jogos = new ArrayList<>();
 
-	    public ArrayList<Jogo> listar() {
-	        return jogos;
-	    }
+    //inserir um jogo
+    public boolean inserir(Jogo jogo) {
 
-	    public Jogo buscarPorTitulo(String titulo) {
+        if (jogo == null || jogo.getTitulo() == null
+                || jogo.getTitulo().trim().isEmpty()) {
+            return false;
+        }
 
-	        for (Jogo jogo : jogos) {
-	            if (jogo.getTitulo().equalsIgnoreCase(titulo)) {
-	                return jogo;
-	            }
-	        }
+        // Evita cadastrar dois jogos com o mesmo título
+        if (buscarPorTitulo(jogo.getTitulo()) != null) {
+            return false;
+        }
 
-	        return null;
-	    }
+        jogos.add(jogo);
+        return true;
+    }
 
-	    public boolean atualizar(String titulo, String novoGenero, String novaPlataforma) {
+    // listar todos os jogos
+    public ArrayList<Jogo> listar() {
+        return new ArrayList<>(jogos);
+    }
 
-	        Jogo jogo = buscarPorTitulo(titulo);
+    // buscar jogo pelo título
+    public Jogo buscarPorTitulo(String titulo) {
 
-	        if (jogo != null) {
-	            jogo.setGenero(novoGenero);
-	            jogo.setPlataforma(novaPlataforma);
-	            return true;
-	        }
+        if (titulo == null || titulo.trim().isEmpty()) {
+            return null;
+        }
 
-	        return false;
-	    }
+        for (Jogo jogo : jogos) {
+            if (jogo.getTitulo().equalsIgnoreCase(titulo.trim())) {
+                return jogo;
+            }
+        }
 
-	    public boolean remover(String titulo) {
+        return null;
+    }
 
-	        Jogo jogo = buscarPorTitulo(titulo);
+    //atualizar gênero e plataforma
+    public boolean atualizar(String titulo, String novoGenero,
+            String novaPlataforma) {
 
-	        if (jogo != null) {
-	            jogos.remove(jogo);
-	            return true;
-	        }
+        Jogo jogo = buscarPorTitulo(titulo);
 
-	        return false;
-	    }
-	}
+        if (jogo == null || novoGenero == null
+                || novoGenero.trim().isEmpty()
+                || novaPlataforma == null
+                || novaPlataforma.trim().isEmpty()) {
+            return false;
+        }
 
+        jogo.setGenero(novoGenero);
+        jogo.setPlataforma(novaPlataforma);
+
+        return true;
+    }
+
+    // remover jogo pelo título
+    public boolean remover(String titulo) {
+
+        Jogo jogo = buscarPorTitulo(titulo);
+
+        if (jogo == null) {
+            return false;
+        }
+
+        jogos.remove(jogo);
+        return true;
+    }
+}

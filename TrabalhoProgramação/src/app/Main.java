@@ -1,10 +1,9 @@
-
 package app;
 
 public class Main {
 
     public static void main(String[] args) {
-        Sistema sistema = new Sistema();
+        Sistemas sistema = new Sistemas();
         sistema.executar();
     }
 }
